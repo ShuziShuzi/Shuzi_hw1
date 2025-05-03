@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 4.0)
 
 project(main)
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-aux_source_directory(src SRC_LIST)
+include_directories(${PROJECT_SOURCE_DIR}/inc)
 
-include_directories(inc)
+file(GLOB SRC_LIST "${PROJECT_SOURCE_DIR}/src/*.c")
 
 add_executable(main ${SRC_LIST})
