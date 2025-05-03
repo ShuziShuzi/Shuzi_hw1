@@ -6,7 +6,7 @@
           "${workspaceFolder}/inc/**"
         ],
         "defines": [],
-        "compilerPath": "D:/Vscode/bin/gcc",  // 替换为你的路径
+        "compilerPath": "D:/Vscode/bin/gcc", 
         "cStandard": "c17",
         "cppStandard": "gnu++14",
         "intelliSenseMode": "windows-gcc-x64"
