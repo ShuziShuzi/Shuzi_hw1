@@ -1,66 +1,41 @@
 # algebra
-硬件技术团队编程基础作业
-## 课件资料 | Reference
-* [课程PPT](https://tannin-1316822731.cos.ap-nanjing.myqcloud.com/2025-04-19-2025%E7%A1%AC%E4%BB%B6%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%86%85%E8%AE%AD.pdf)
-* [VSCode的C/C++环境配置教程](https://www.bilibili.com/video/BV1UZ421e7ty/?share_source=copy_web&vd_source=d82c2ec75577b6834f9f580f066180c1)
-* [Git使用教程](https://www.bilibili.com/video/BV1og4y1u7XU/?share_source=copy_web&vd_source=d82c2ec75577b6834f9f580f066180c1)
-## 预修要求｜Requirements
-修读过《C程序设计基础》、《线性代数》以及X·Lab硬件技术团队编程基础课程或其对应的高阶课程。
-## 说明｜Explainations
-本题目的难度对于初学者而言相对较高，主要考察了基础的数学能力、通过编程解决问题的能力以及工程管理、CMake、git等综合能力。该作业的最终得分仅作参考，同学们可根据自己的能力来决定实现哪些函数。
-## 题目背景｜Background
-《线性代数》作为浙江大学工科多数专业必修的数学基础课程，对于其掌握是至关重要的，后续各大专业的专业课程也都离不开线性代数。然而，在后续的专业课程学习中，我们往往只需要计算一些矩阵的数值解，这个过程如果用手去计算的话是十分痛苦的。秉承着“我都学编程了就不要自己做一些无意义的事情”的原则，我们决定实现一个线性代数计算库，来辅助我们进行运算。
-> 当然，如MATLAB、Python等高级编程语言已经可以做到这类事情，且做得更好，但这并不妨碍我们通过这样一种方式来锻炼自己的C语言编程能力。
-## 题目介绍｜Introduction
-本仓库给出了我们在内训中提到的工程模板，同学们要做的任务如下：
-1. 自学git，注册GitHub账号，将本仓库在自己的GitHub账户下Fork一份（注意是Fork，禁止直接clone本仓库到本地，否则你将无法完成后续提交），并按照`yourname_hw1`的格式更改仓库名称（在仓库中的Settings处可修改，记得不要用中文，仓库权限为public，如涉及到隐私保护，可设为private，但要将`tanninrachel@yinlin.wiki`这个账户设置为协作者）。
-2. 将你的仓库clone到本地。
-3. 按照内训所讲的工程模板补充所缺的文件夹。
-4. 根据`inc/algebra.h`中的注释和预定义，在`src/algebra.c`中实现对应的函数。
-5. 根据内训所讲，自行编写`CMakeLists.txt`文件，使你的工程能够在本地成功编译运行。
-6. 自学Markdown，修改`README.md`文件，需要包含你的实现思路（大致描述即可）以及本地运行截图。
-7. 将你的修改提交到远程仓库，并将仓库链接提交（提交方式见下文）。
-## 思路参考｜Thinking
-见`doc`文件夹。
-## 交互格式｜Format
-在本题目中，`main.c`文件已给出，不需要同学们自己实现，也请不要更改这个文件，否则可能出现判题错误。
-### 输入格式
-本题目采用帧判定的思路进行，每一帧的第一行指令代码，`+`、`-`、`*`、`.`、`t`、`d`、`i`、`r`、`j`分别测试`add_matrix`、`sub_matrix`、`mul_matrix`、`scale_matrix`、`transpose_matrix`、`det_matrix`、`inv_matrix`、`rank_matrix`、`trace_matrix`函数，`q`表示退出。
-
-接下来的一行输入矩阵 $\mathbf{A}$ 的行数 $m$ 和列数 $n$ ，在接下来的 $m$ 行中输入 $n$ 个双精度浮点数，以空格分开。
-对于二元运算函数的测试，需要再按照上述过程输入矩阵 $\textbf{B}$ 。
-
-可能的一次运行输入如下：
-```
-+
-2 2
-1.1 1.3
-2.4 3.7
-2 2
-3.1 4.3
-5.1 7.1
-+
-2 2
-1.1 1.2
-2.4 3.5
-2 3
-1 2 2.1
-3 2 3.3
-q
-```
-### 输出格式
-在每一帧中，依次根据输入的指令代码运行对应的函数，并给出函数的输出与标准值比对。上述输入的正确输出如下：
-```
-4.20    5.60    
-7.50    10.80
-Error: Matrix a and b must have the same rows and cols.
-```
-## 评分标准｜Standard
-* 成功运行：+25分
-* `add_matrix`、`sub_matrix`、`mul_matrix`、`scale_matrix`、`transpose_matrix`、`trace_matrix`功能正常每个+5分
-* `det_matrix`、`inv_matrix`、`rank_matrix`功能正常共+10分（此处为附加题，有一定难度，可选做）
-> 为了保证题目难度，每个函数具体的评分标准不予公布。
-## 提交方式｜Submit
-将你的每个函数的测试运行结果以截图的形式放在你仓库的`README.md`文件中（请注意Markdown中图片的引用要包含源文件）。并将你的最终代码仓库链接（在浏览器上的那个，不要带有`.git`的）填写如下问卷发送：
-
-![](https://tannin-1316822731.cos.ap-nanjing.myqcloud.com/2025-04-19-%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%86%85%E8%AE%AD%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4.png)
+## 一、加法/减法
+* 本质上是一样的，先判断两个矩阵的行列是否一致，在对应位置的加减即可，这里直接给出测试结果
+<img src="加法.png" alt="alt text" style="width: 65%;" />  
+<img src="减法.png" alt="alt text" style="width: 65%;" />  
+## 二、乘法/数乘
+* **乘法**先判断a的列数与b的行数是否一致，再按照乘法基本规则计算（此处n为a的列数）
+* **数乘**是矩阵每个数与k相乘即可，这里刚开始不知道为什么没有输入k，最后发现main函数中已经指明$k=2$
+$$ c_{ij}=\sum_{k=0}^{n}a_{ik}b_{kj}$$
+* 测试结果
+<img src="乘法 .png" alt="alt text" style="width: 65%;" />  
+<img src="数乘.png" alt="alt text" style="width: 65%;" />  
+## 三、转置
+* 新建一个矩阵，元素一一赋值即可
+  $$ c_{ij} = a_{ji}$$
+* 测试结果
+<img src="转置.png" alt="alt text" style="width: 50%;" />  
+## 四、行列式
+* 先判断是否为n×n型，是的话找按照主元、对换位置（如果当前行不是主元所在行）、消元即可。
+* 这里注意到main函数中无论是否存在行列式，最终都会$ printf~det$,所以还是会输出0.00，由于本身模板中就是$return~0$，所以这里就不加修改了。
+* 特殊情况若主元为0，则行列式为0
+* 测试结果
+<img src="行列式.png" alt="alt text" style="width: 50%;" />  
+## 五、逆矩阵
+* 矩阵求逆的思路就是，先找伴随矩阵，求行列式，再算逆矩阵
+伴随矩阵：
+$$A^*=(A_{ij})^T ，A_{ij}为A中a_{ij}的代数余子式\\
+A^{-1}=\frac{1}{|A|}A^*
+$$
+* 测试结果
+<img src="逆矩阵.png" alt="alt text" style="width: 50%;" /> 
+## 六、秩
+* 和行列式有些类似，找主元、高斯消元，非0行的数量即为矩阵的秩
+* 每次找到一个非0主元，则非0行+1，秩一定不大于行数
+* 测试结果
+<img src="秩.png" alt="alt text" style="width: 65%;" /> 
+## 七、迹
+* 先确定是否为方阵，是的话对角线上的元素相乘即可
+$$t=\prod_{i=0}^{n}a_{ii}$$
+* 测试结果
+<img src="迹.png" alt="alt text" style="width: 65%;" /> 
