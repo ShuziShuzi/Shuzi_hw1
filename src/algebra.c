@@ -12,11 +12,12 @@ Matrix create_matrix(int row, int col)
 
 Matrix add_matrix(Matrix a, Matrix b)
 {
-    // ToDo
+    //矩阵行、列不相等
     if(a.rows != b.rows || a.cols != b.cols){
         printf("Error: Matrix a and b must have the same rows and cols.\n");
         return create_matrix(0, 0);
     }
+    //矩阵加法
     Matrix result = create_matrix(a.rows, a.cols);
     for (int i = 0; i < a.rows; i++){
         for (int j = 0;j < a.cols; j++){
@@ -28,11 +29,12 @@ Matrix add_matrix(Matrix a, Matrix b)
 
 Matrix sub_matrix(Matrix a, Matrix b)
 {
-    // ToDo
+    //矩阵行、列不相等
     if(a.rows != b.rows || a.cols != b.cols){
         printf("Error: Matrix a and b must have the same rows and cols.\n");
         return create_matrix(0, 0);
     }
+    //矩阵减法
     Matrix result = create_matrix(a.rows, a.cols);
     for (int i = 0; i < a.rows; i++){
         for (int j = 0;j < a.cols; j++){
@@ -44,11 +46,12 @@ Matrix sub_matrix(Matrix a, Matrix b)
 
 Matrix mul_matrix(Matrix a, Matrix b)
 {
-    // ToDo
+    //前一个矩阵的列与后一个矩阵的行不相等
     if(a.cols != b.rows){
         printf("Error: The number of cols of matrix a must be equal to the number of rows of matrix b.\n");
         return create_matrix(0, 0);
     }
+    //矩阵乘法
     Matrix result = create_matrix(a.rows, b.cols);
     for (int i = 0; i < a.rows; i++){
         for (int j = 0;j < a.cols; j++){
@@ -64,7 +67,6 @@ Matrix mul_matrix(Matrix a, Matrix b)
 
 Matrix scale_matrix(Matrix a, double k)
 {
-    // ToDo
     Matrix result = create_matrix(a.rows, a.cols);
     for (int i = 0; i < a.rows; i++){
         for (int j = 0;j < a.cols; j++){
@@ -76,7 +78,6 @@ Matrix scale_matrix(Matrix a, double k)
 
 Matrix transpose_matrix(Matrix a)
 {
-    // ToDo
     Matrix result = create_matrix(a.cols, a.rows);
     for (int i = 0; i < a.rows; i++){
         for (int j = 0;j < a.cols; j++){
@@ -88,10 +89,10 @@ Matrix transpose_matrix(Matrix a)
 
 double det_matrix(Matrix a)
 {
-    // ToDo
+    //非方阵
     if(a.rows != a.cols){
         printf("Error: The matrix must be a square matrix.\n");
-        return NAN;
+        return 0;
     }
     //复制矩阵
     int n = a.rows;
@@ -185,6 +186,7 @@ int rank_matrix(Matrix a)
             tmp.data[i][j] = a.data[i][j];
         }
     }
+    //找主元
     int rank = 0;
     for(int row = 0, col = 0;col < tmp.cols && row < tmp.rows;col++){
         int max_row = row;
@@ -203,6 +205,7 @@ int rank_matrix(Matrix a)
                 tmp.data[max_row][j] = temp;
             }
         }
+        //高斯消元
         for(int i = row + 1;i < tmp.rows;i++){
             double factor = tmp.data[i][col] / tmp.data[row][col];
             for(int j = col;j < tmp.cols;j++){
@@ -217,10 +220,10 @@ int rank_matrix(Matrix a)
 
 double trace_matrix(Matrix a)
 {
-    // ToDo
+    //非方阵
     if (a.rows != a.cols){
         printf("Error: The matrix must be a square matrix.\n");
-        return NAN;
+        return 0;
     }
     double trace = 0.0;
     for (int i = 0;i < a.rows;i++){
