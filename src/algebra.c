@@ -181,14 +181,14 @@ int rank_matrix(Matrix a)
     // 与求行列式类似，找主元、高斯消元，找非0行
     Matrix tmp = create_matrix(a.rows, a.cols);
     for(int i = 0;i < a.rows;i++){
-        for(int j =0;j < a.cols;j++){
+        for(int j = 0;j < a.cols;j++){
             tmp.data[i][j] = a.data[i][j];
         }
     }
     int rank = 0;
     for(int row = 0, col = 0;col < tmp.cols && row < tmp.rows;col++){
         int max_row = row;
-        for(int i = row + 1; i < tmp.rows;i++){
+        for(int i = row ; i < tmp.rows;i++){
             if(fabs(tmp.data[i][col]) > fabs(tmp.data[max_row][col])){
                 max_row = i;
             }
@@ -203,7 +203,7 @@ int rank_matrix(Matrix a)
                 tmp.data[max_row][j] = temp;
             }
         }
-        for(int i = row + i;i < tmp.rows;i++){
+        for(int i = row + 1;i < tmp.rows;i++){
             double factor = tmp.data[i][col] / tmp.data[row][col];
             for(int j = col;j < tmp.cols;j++){
                 tmp.data[i][j] -= factor * tmp.data[row][j];
