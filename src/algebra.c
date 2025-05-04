@@ -91,7 +91,7 @@ double det_matrix(Matrix a)
     // ToDo
     if(a.rows != a.cols){
         printf("Error: The matrix must be a square matrix.\n");
-        return 0;
+        return NAN;
     }
     //复制矩阵
     int n = a.rows;
@@ -220,7 +220,7 @@ double trace_matrix(Matrix a)
     // ToDo
     if (a.rows != a.cols){
         printf("Error: The matrix must be a square matrix.\n");
-        return 0;
+        return NAN;
     }
     double trace = 0.0;
     for (int i = 0;i < a.rows;i++){
